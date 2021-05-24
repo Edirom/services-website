@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link rel="icon" href="/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <title>ZenMEM and ViFE Services</title>
+    <meta name="description" content="Services of the ZenMEM and ViFE">
+    <meta name="author" content="Daniel Röwenstrunk <roewenstrunk@uni-paderborn.de>">
+
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="/main.css">
+
+    <script src="https://github.com/Edirom/services-component/releases/latest/download/services-component.min.js"></script>
+</head>
+<body>
+<noscript><strong>We're sorry but zenmem.de doesn't work properly without JavaScript enabled. Please enable it to
+    continue.</strong></noscript>
+<div id="app">
+    <header id="nav" class="navbar">
+        <section class="navbar-section"><a href="/" id="home"><img
+                src="/pix/ZenMEM_white.png" alt="ZenMEM"></a></section>
+        <section class="navbar-section"><a href="https://zenmem.de/about">Über uns</a><a
+                href="https://zenmem.de/contact">Kontakt</a></section>
+    </header>
+    <div data-v-3f715fab="" class="services">
+        <div data-v-3f715fab="" class="container grid-lg mainContent">
+            <div data-v-3f715fab="" class="columns">
+                <div data-v-3f715fab="" class="column col-12">
+                    <h1 data-v-3f715fab="">Service-Monitor</h1>
+                    <div data-v-3f715fab="" class="container grid-lg margin-top">
+                        <services-component class="columns"></services-component>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+        <div class="footer-third">
+            <div class="footer-links"><a href="https://zenmem.de/imprint">Impressum</a><a
+                    href="https://zenmem.de/about">Über uns</a><a
+                    href="https://zenmem.de/contact">Kontakt</a></div>
+            <div class="footer-zenmem"><a href="https://zenmem.de/">ZenMEM<br>Zentrum Musik – Edition – Medien</a>
+            </div>
+        </div>
+        <div class="footer-third"><a href="https://edirom.de" target="_blank"><img id="footer-vife"
+                                                                                   src="/pix/ViFE-logo-969x510-trans.png"
+                                                                                   alt="Virtueller Forschungsverbund Edirom"></a>
+        </div>
+        <div class="footer-third"><a href="https://uni-paderborn.de" target="_blank"><img id="footer-upb"
+                                                                                          src="/pix/upb-logo_rgb.png"
+                                                                                          alt="Universität Paderborn"></a>
+        </div>
+    </footer>
+
+</div>
+<script>
+    let xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let services = JSON.parse(this.responseText);
+            const element = document.querySelector('services-component');
+            element.services = services;
+        }
+    };
+    xhttp.open('GET', 'https://dev.zenmem.de/monitors.json', true);
+    xhttp.send();
+</script>
+</body>
+</html>
